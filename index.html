@@ -10,7 +10,7 @@
 <link rel="icon" href="img/oneview.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -37,38 +37,29 @@
 </header>
 <main>
 
-<section class="hero" id="app">
-  <div id="loading">Loading the sand table…</div>
-  <canvas id="gl" tabindex="0" aria-label="Interactive 3D sand table of a mountain valley. Drag to rotate, right-drag to move, hold Ctrl and scroll to zoom."></canvas>
-  <div class="fade" aria-hidden="true"></div>
-  <div class="hud" aria-hidden="true"><div class="scan"></div><div class="frame"></div></div>
-  <div class="telemetry" aria-hidden="true">
-    <div class="row"><span><span class="dot"></span>ONEVIEW · LIVE</span><b id="t-clock">--:--:--Z</b></div>
-    <div class="row"><span>TRACKS</span><b>04 <span class="hos">· 2 HOSTILE</span></b></div>
-    <div class="row"><span>HEADING</span><b id="t-hdg">328.1°</b></div>
-    <div class="row"><span>WIND</span><b id="t-wind">15.0 km/h</b></div>
-    <div class="row"><span>ALT</span><b>4,500 m</b></div>
-    <div class="row"><span>NODES</span><b>5/5 LINKED<span class="blink">_</span></b></div>
-  </div>
-  <div class="copy-layer"><div class="wrap"><div class="copy">
-    <span class="eyebrow"><svg class="flag" viewBox="0 0 30 20" width="21" height="14" role="img" aria-label="Indian flag"><rect width="30" height="20" rx="2" fill="#fff"/><path d="M0 2a2 2 0 0 1 2-2h26a2 2 0 0 1 2 2v4.67H0z" fill="#FF9933"/><path d="M0 13.33h30V18a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" fill="#138808"/><circle cx="15" cy="10" r="3.2" fill="none" stroke="#000080" stroke-width=".7"/><path d="M15 10L18.20 10.00M15 10L18.09 10.83M15 10L17.77 11.60M15 10L17.26 12.26M15 10L16.60 12.77M15 10L15.83 13.09M15 10L15.00 13.20M15 10L14.17 13.09M15 10L13.40 12.77M15 10L12.74 12.26M15 10L12.23 11.60M15 10L11.91 10.83M15 10L11.80 10.00M15 10L11.91 9.17M15 10L12.23 8.40M15 10L12.74 7.74M15 10L13.40 7.23M15 10L14.17 6.91M15 10L15.00 6.80M15 10L15.83 6.91M15 10L16.60 7.23M15 10L17.26 7.74M15 10L17.77 8.40M15 10L18.09 9.17" stroke="#000080" stroke-width=".3"/></svg>Designed and built in India</span>
-    <h1>Battlefield intelligence for India&rsquo;s armed forces.</h1>
-    <p class="lede">We build the sensors and the software that help Indian units see more and decide faster.</p>
-    <div class="btns"><a class="btn primary" href="oneview.html">Explore OneView</a><a class="btn ghost" href="https://www.futurearth.co/_files/ugd/68453e_98bd35fc959f437ba48a930c511ecbbf.pdf" target="_blank" rel="noopener">Pitch deck <span aria-hidden="true">↗</span></a></div>
+<section class="hfeed" aria-label="OneView illustrative scenario">
+  <canvas id="feed" aria-label="Simulated aerial sensor feed. OneView detects contacts in a mountain valley, verifies our own column, clears a civilian truck, and flags six armoured vehicles behind a ridge as hostile."></canvas>
+  <div class="hfeed-shade" aria-hidden="true"></div>
+  <div class="hfeed-grain" aria-hidden="true"></div>
+  <div class="hfeed-log" aria-hidden="true"><div class="wrap"><div class="panel">
+    <div class="bar"><span><span class="dot"></span>ONEVIEW · SIMULATION</span><span id="feed-stat">TRACKS <b>00</b></span></div>
+    <ol id="feed-log"></ol>
   </div></div></div>
-  <div class="tools">
-    <span class="pill">Illustrative scenario: six tanks found behind the ridge</span>
-    <span class="pill" id="hint">Drag to rotate · Right-drag to move · Ctrl + scroll to zoom</span>
-    <div class="ctrl" role="group" aria-label="View controls">
-      <button type="button" id="zout" aria-label="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
-      <button type="button" id="zin" aria-label="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
-      <button type="button" id="reset"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Reset view</button>
+  <div class="hfeed-copy"><div class="wrap">
+    <div class="lead">
+      <span class="hfeed-eyebrow"><svg class="flag" viewBox="0 0 30 20" width="21" height="14" role="img" aria-label="Indian flag"><rect width="30" height="20" rx="2" fill="#fff"/><path d="M0 2a2 2 0 0 1 2-2h26a2 2 0 0 1 2 2v4.67H0z" fill="#FF9933"/><path d="M0 13.33h30V18a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" fill="#138808"/><circle cx="15" cy="10" r="3.2" fill="none" stroke="#000080" stroke-width=".7"/><path d="M15 10L18.20 10.00M15 10L18.09 10.83M15 10L17.77 11.60M15 10L17.26 12.26M15 10L16.60 12.77M15 10L15.83 13.09M15 10L15.00 13.20M15 10L14.17 13.09M15 10L13.40 12.77M15 10L12.74 12.26M15 10L12.23 11.60M15 10L11.91 10.83M15 10L11.80 10.00M15 10L11.91 9.17M15 10L12.23 8.40M15 10L12.74 7.74M15 10L13.40 7.23M15 10L14.17 6.91M15 10L15.00 6.80M15 10L15.83 6.91M15 10L16.60 7.23M15 10L17.26 7.74M15 10L17.77 8.40M15 10L18.09 9.17" stroke="#000080" stroke-width=".3"/></svg>OneView · Intelligence layer</span>
+      <h1>Battlefield intelligence, <strong>built in India.</strong></h1>
+      <p class="lede">OneView joins what every sensor sees into one picture. It tells friend from foe. The commander decides.</p>
+      <div class="btns"><a class="btn primary" href="oneview.html">Explore OneView <span aria-hidden="true">→</span></a><a class="btn ghost" href="https://www.futurearth.co/_files/ugd/68453e_98bd35fc959f437ba48a930c511ecbbf.pdf" target="_blank" rel="noopener">Pitch deck <span aria-hidden="true">↗</span></a></div>
+      <span class="note">Illustrative scenario. Not live data.</span>
     </div>
-  </div>
-  <div class="toast" id="toast" role="status">Hold Ctrl (⌘ on Mac) and scroll to zoom</div>
+    <div class="rec" id="feed-rec" aria-hidden="true">
+      <span class="k">RECOMMENDATION</span>
+      <b>Warn the column. Hold at the bend.</b>
+      <span class="wait">AWAITING COMMANDER</span>
+    </div>
+  </div></div>
 </section>
-
-<div class="ticker" aria-label="Illustrative scenario feed"><div class="ticker-track"><span><i class="t-fr">SIMULATION</i>Column in the valley · 4,500 m</span><span><i class="t-neu">TRACK 01</i>Civilian truck · cleared · no alert</span><span><i class="t-hos">TRACK 02</i>Quadcopter · hostile · column warned</span><span><i class="t-hos">TRACK 03</i>6 tanks · located behind ridge</span><span><i class="t-fr">L1</i>Light drone · tasked by OneView</span><span><i class="t-unk">TRACK 04</i>Fast mover · air · checking sources</span><span><i class="t-fr">CMD</i>Awaiting commander decision</span><span><i class="t-fr">SIMULATION</i>Column in the valley · 4,500 m</span><span><i class="t-neu">TRACK 01</i>Civilian truck · cleared · no alert</span><span><i class="t-hos">TRACK 02</i>Quadcopter · hostile · column warned</span><span><i class="t-hos">TRACK 03</i>6 tanks · located behind ridge</span><span><i class="t-fr">L1</i>Light drone · tasked by OneView</span><span><i class="t-unk">TRACK 04</i>Fast mover · air · checking sources</span><span><i class="t-fr">CMD</i>Awaiting commander decision</span></div></div>
 
 <section class="band"><div class="wrap stack" style="gap:28px">
   <span class="eyebrow">Our mission</span>
@@ -142,8 +133,7 @@
   </div>
 </footer>
 <script src="assets/site.js"></script>
-<script src="assets/three.min.js"></script>
-<script src="assets/OrbitControls.js"></script>
-<script src="assets/hero3d.js"></script>
+<script src="assets/fx.js"></script>
+<script src="assets/hero-feed.js"></script>
 </body>
 </html>
